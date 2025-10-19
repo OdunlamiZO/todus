@@ -37,6 +37,12 @@ jobs:
           server-username: GITHUB_ACTOR
           server-password: GITHUB_TOKEN
 
+      - name: Deploy Todus parent POM
+        run: mvn --batch-mode deploy -Pgithub
+        working-directory: .
+        env:
+          GITHUB_TOKEN: ${{ secrets.TODUS_GITHUB_TOKEN }}
+
       - name: Deploy Todus Core
         run: mvn --batch-mode deploy -Pgithub
         working-directory: todus-core
