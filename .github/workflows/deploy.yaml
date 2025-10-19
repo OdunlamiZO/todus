@@ -38,6 +38,6 @@ jobs:
           server-password: GITHUB_TOKEN
 
       - name: Deploy to GitHub Packages
-        run: mvn --batch-mode deploy -Pgithub
+        run: mvn deploy -Pgithub -pl todus-core,todus-maven-plugin -am
         env:
           GITHUB_TOKEN: ${{ secrets.TODUS_GITHUB_TOKEN }}
