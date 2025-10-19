@@ -1,0 +1,70 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>io.github.odunlamizo</groupId>
+    <artifactId>todus</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>todus-core</artifactId>
+  <packaging>jar</packaging>
+
+  <name>Todus Core</name>
+  <description>Core library for Todo tracking annotations and logic.</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>2.0.13</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>io.github.classgraph</groupId>
+      <artifactId>classgraph</artifactId>
+      <version>4.8.172</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.11.0</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <profiles>
+    <!-- <profile>
+          <id>ossrh</id>
+          <distributionManagement>
+            <snapshotRepository>
+              <id>ossrh</id>
+              <name>OSSRH Snapshots</name>
+              <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            </snapshotRepository>
+            <repository>
+              <id>ossrh</id>
+              <name>OSSRH Releases</name>
+              <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            </repository>
+          </distributionManagement>
+        </profile> -->
+
+    <profile>
+      <id>github</id>
+      <distributionManagement>
+        <repository>
+          <id>github</id>
+          <name>GitHub Packages</name>
+          <url>https://maven.pkg.github.com/OdunlamiZO/todus</url>
+        </repository>
+      </distributionManagement>
+    </profile>
+  </profiles>
+
+</project>
