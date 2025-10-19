@@ -24,7 +24,7 @@ Add the plugin to your Maven project’s `pom.xml`:
         <plugin>
             <groupId>io.github.odunlamizo</groupId>
             <artifactId>todus-maven-plugin</artifactId>
-            <version>1.0.0</version>
+            <version>1.0-SNAPSHOT</version>
             <executions>
                 <execution>
                     <goals>
