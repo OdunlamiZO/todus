@@ -1,4 +1,4 @@
-package io.github.odunlamizo.todus.annotations;
+package io.github.odunlamizo.todus.annotation;
 
 import java.lang.annotation.*;
 
