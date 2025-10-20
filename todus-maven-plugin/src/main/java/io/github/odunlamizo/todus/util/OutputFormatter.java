@@ -13,23 +13,38 @@ public class OutputFormatter {
         int descWidth =
                 Math.max(
                         headers[0].length(),
-                        todos.stream().mapToInt(t -> t.getDescription().length()).max().orElse(0));
+                        todos.stream()
+                                .mapToInt(t -> nonEmpty(t.getDescription()).length())
+                                .max()
+                                .orElse(0));
         int assigneeWidth =
                 Math.max(
                         headers[1].length(),
-                        todos.stream().mapToInt(t -> t.getAssignee().length()).max().orElse(0));
+                        todos.stream()
+                                .mapToInt(t -> nonEmpty(t.getAssignee()).length())
+                                .max()
+                                .orElse(0));
         int priorityWidth =
                 Math.max(
                         headers[2].length(),
-                        todos.stream().mapToInt(t -> t.getPriority().length()).max().orElse(0));
+                        todos.stream()
+                                .mapToInt(t -> nonEmpty(t.getPriority()).length())
+                                .max()
+                                .orElse(0));
         int dueWidth =
                 Math.max(
                         headers[3].length(),
-                        todos.stream().mapToInt(t -> t.getDue().length()).max().orElse(0));
+                        todos.stream()
+                                .mapToInt(t -> nonEmpty(t.getDue()).length())
+                                .max()
+                                .orElse(0));
         int locationWidth =
                 Math.max(
                         headers[4].length(),
-                        todos.stream().mapToInt(t -> t.getLocation().length()).max().orElse(0));
+                        todos.stream()
+                                .mapToInt(t -> nonEmpty(t.getLocation()).length())
+                                .max()
+                                .orElse(0));
 
         StringBuilder sb = new StringBuilder();
 
@@ -76,14 +91,19 @@ public class OutputFormatter {
                                     + "s  %-"
                                     + dueWidth
                                     + "s  %s%n",
-                            truncate(capitalize(t.getDescription()), descWidth),
-                            truncate(capitalize(t.getAssignee()), assigneeWidth),
-                            truncate(t.getPriority(), priorityWidth),
-                            truncate(capitalize(t.getDue()), dueWidth),
-                            truncate(t.getLocation(), locationWidth)));
+                            truncate(capitalize(nonEmpty(t.getDescription())), descWidth),
+                            truncate(capitalize(nonEmpty(t.getAssignee())), assigneeWidth),
+                            truncate(nonEmpty(t.getPriority()), priorityWidth),
+                            truncate(capitalize(nonEmpty(t.getDue())), dueWidth),
+                            truncate(nonEmpty(t.getLocation()), locationWidth)));
         }
 
         return sb.toString();
+    }
+
+    // Return dash for null or empty
+    private static String nonEmpty(String text) {
+        return (text == null || text.isBlank()) ? "-" : text;
     }
 
     // Truncate long text with ellipsis
