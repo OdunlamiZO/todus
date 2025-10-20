@@ -63,13 +63,14 @@ public class TodusListMojo extends AbstractMojo {
             java.util.function.Consumer<String> addUrl =
                     (path) -> {
                         try {
-                            URL u = new File(path).toURI().toURL();
-                            if (!urls.contains(u)) {
-                                urls.add(u);
-                                getLog().debug("🔗 Added classpath URL: " + u);
+                            URL url = new File(path).toURI().toURL();
+                            if (!urls.contains(url)) {
+                                urls.add(url);
+                                getLog().debug("🔗 Added classpath URL: " + url);
                             }
-                        } catch (Exception e) {
-                            throw new RuntimeException("Failed to add classpath URL: " + path, e);
+                        } catch (Exception exception) {
+                            throw new RuntimeException(
+                                    "Failed to add classpath URL: " + path, exception);
                         }
                     };
             compileCp.forEach(addUrl);

@@ -1,6 +1,6 @@
 package io.github.odunlamizo.todus.model;
 
-import io.github.odunlamizo.todus.annotations.Todo;
+import io.github.odunlamizo.todus.annotation.Todo;
 
 @Todo(
         value = "fill properties",

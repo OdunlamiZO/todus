@@ -15,7 +15,7 @@ import java.util.List;
 public class TodoScanner {
 
     /** Fully qualified name of the @Todo annotation */
-    private static final String TODO_ANN_FQCN = "io.github.odunlamizo.todus.annotations.Todo";
+    private static final String TODO_ANN_FQCN = "io.github.odunlamizo.todus.annotation.Todo";
 
     /** ClassLoader to use when scanning project classes */
     private final ClassLoader classLoader;
